@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Extract only the Pilot name from the .igc file
+
+
+# Pilot name
+
+if [[ $# -eq 1 ]]; then                         # If no argument is specified we give a warning
+   grep '^HFPLT' $1 | cut -d : -f 2
+else
+   echo "Proper usage is igc-pilot [igc file]"  # Printing the warning
+fi
+
+
+

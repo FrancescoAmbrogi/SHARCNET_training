@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# This script will run to every filea and 
+# it will find the max alt per year per pilot
+
+for year in 15 16 17 ; do                             # loop in every year
+  
+  for pilot in Aasia Bill Fred Lena Mary Mo ; do      # loop in every pilot
+
+    maxalt=$(for file in $pilot-????$year-*.igc ;     # loop in every .igc file
+            
+	    do igc-maxalt $file ;                     # run the maxalt command
+
+	    done | sort | tail -n 1                   # sort and extract the 1 value
+
+	    )
+
+    echo "$year - $pilot: $maxalt"                    # print the result to screen
+
+  done
+
+done
+

@@ -1,0 +1,24 @@
+#!/bin/bash
+
+#Reference command flight example
+
+# Date
+grep '^HFDTE' /home/ambrox/SHARCNET_course/01_shell_intro/flights/553c6742.igc | cut -c 6-
+
+# Pilot name
+grep '^HFPLT' /home/ambrox/SHARCNET_course/01_shell_intro/flights/553c6742.igc | cut -d : -f 2
+
+# Plane type
+grep '^HFGIDGLIDERID' /home/ambrox/SHARCNET_course/01_shell_intro/flights/553c6742.igc | cut -d : -f 2
+
+# Start time
+grep '^B' /home/ambrox/SHARCNET_course/01_shell_intro/flights/553c6742.igc | cut -c 2-7 | head -n 1
+
+# End time
+grep '^B' /home/ambrox/SHARCNET_course/01_shell_intro/flights/553c6742.igc | cut -c 2-7 | tail -n 1
+
+# Highest GPS altitude
+grep '^B' /home/ambrox/SHARCNET_course/01_shell_intro/flights/553c6742.igc | cut -c 31-35 | sort | tail -n 1
+
+# All pilots
+grep ^HFPLT /home/ambrox/SHARCNET_course/01_shell_intro/flights/*.igc | cut  -d : -f 3 | sort | uniq

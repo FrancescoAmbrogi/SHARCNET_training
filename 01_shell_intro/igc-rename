@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# This script will run to every file and 
+# rename it based on the following format
+# pilot-date-filename.igc
+
+for file in *.igc ; do          # here we loop for every file (specify location of the folder)
+  
+  pilot=$(igc-pilot $file)      # extract pilot name using a custom command
+
+  date=$(igc-date $file)        # extract date using a custom command
+
+  mv $file $pilot-$date-$file   # rename the file
+
+done
+
+
+
+

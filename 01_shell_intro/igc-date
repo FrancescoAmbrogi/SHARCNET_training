@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Extract the date from the .igc file
+
+if [[ $# -eq 1 ]]; then
+   grep '^HFDTE' $1 | cut -c 6-
+else
+   echo "Proper usage is igc-date [igc file]"
+fi
+
